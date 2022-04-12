@@ -1,22 +1,12 @@
 #! /usr/bin/env node
 
-const program = require('commander');
-const download = require('download-git-repo');
-const chalk = require('chalk');
-const ora = require('ora');
+const { program } = require('commander');
 
 program
-	.version('0.1.0')
-	.option('-i, init [name]', '初始化项目')
-	.parse(process.argv);
+	.command('create')
+	.description('create project from template')
+	.action(async () => {
+		require('./commands/create');
+	});
 
-if (program.init) {
-	const spinner = ora('正在下载代码').start();
-	download('code-device/x-build', program.init, function(err) {
-		if (!err) {
-			console.info(chalk.blueBright('下载完毕'));
-		} else {
-			console.info(chalk.redBright('下载错误'));
-		}
-	})
-}
+program.parse(process.argv);
