@@ -16,10 +16,6 @@ if (program.args.length < 1) return program.help();
 
 const projectName = program.args[1];
 
-if (projectName) {
-	return
-}
-
 // 没有输入项目名称，提示后取消执行命令
 if (!projectName) {
 	console.log(chalk.redBright('\n project name does not exit!'));
@@ -30,6 +26,7 @@ console.log(chalk.greenBright('\n Start create... \n'));
 const spinner = ora('Downloading...');
 spinner.start();
 
+// 下载模板代码
 download(
 	'phoebeyuer/leetcode-notes#main',
 	`./${projectName}`,
@@ -42,7 +39,7 @@ download(
 		spinner.succeed();
 		console.log(chalk.greenBright(symbols.success), chalk.greenBright(`Create success!`));
 		console.log('\n To get started');
-		console.log(`\n cd ${projectName} \n`);
+		console.log(` cd ${projectName} & npm install \n`);
 	});
 
 
