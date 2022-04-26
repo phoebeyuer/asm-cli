@@ -8,3 +8,13 @@ exports.templateList = {
   "freestyle": "个性化模板",
   "uniapp": "小程序+h5"
 }
+
+/**
+* console 输出右边对齐
+* @param {String} key 原本的字符
+* @param {Number} num 输出的总长度
+*/
+exports.alignRight = function (key, num) {
+  let space = " ".repeat(num - key.length);
+  return key + space;
+ }
